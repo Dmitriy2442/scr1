@@ -253,7 +253,9 @@ end
 
 assign lsu2dmem_req_o   = exu2lsu_req_i & ~lsu_exc_req & lsu_fsm_idle;
 assign lsu2dmem_addr_o  = exu2lsu_addr_i;
-assign lsu2dmem_wdata_o = exu2lsu_sdata_i;
+assign lsu2dmem_wdata_o = (dmem_cmd_store & dmem_wdth_hword & exu2lsu_addr_i[1])
+                       ? (exu2lsu_sdata_i >> 16)
+                       :  exu2lsu_sdata_i;
 assign lsu2dmem_cmd_o   = dmem_cmd_store  ? SCR1_MEM_CMD_WR : SCR1_MEM_CMD_RD;
 assign lsu2dmem_width_o = dmem_wdth_byte  ? SCR1_MEM_WIDTH_BYTE
                         : dmem_wdth_hword ? SCR1_MEM_WIDTH_HWORD
