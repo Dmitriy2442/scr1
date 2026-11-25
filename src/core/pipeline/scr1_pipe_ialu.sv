@@ -257,7 +257,7 @@ always_comb begin
     shft_op2 = exu2ialu_main_op2_i[4:0];
     case (shft_cmd)
         2'b10   : shft_res = shft_op1  >> shft_op2;
-        2'b11   : shft_res = shft_op1 >>> shft_op2;
+        2'b11   : shft_res = shft_op1  >> shft_op2;
         default : shft_res = shft_op1  << shft_op2;
     endcase
 end
