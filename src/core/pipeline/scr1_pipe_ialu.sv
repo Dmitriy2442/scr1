@@ -577,7 +577,7 @@ always_comb begin
             ialu2exu_main_res_o = main_sum_res[`SCR1_XLEN-1:0];
         end
         SCR1_IALU_CMD_SUB_LT : begin
-            ialu2exu_main_res_o = `SCR1_XLEN'(main_sum_flags.s ^ main_sum_flags.o);
+            ialu2exu_main_res_o = `SCR1_XLEN'(main_sum_flags.s);
             ialu2exu_cmp_res_o  = main_sum_flags.s ^ main_sum_flags.o;
         end
         SCR1_IALU_CMD_SUB_LTU : begin
