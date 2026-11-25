@@ -239,7 +239,7 @@ always_comb begin
                                     3'b011  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_SUB_LTU;
                                     3'b100  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_OR;
                                     3'b101  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_SRL;
-                                    3'b110  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_OR;
+                                    3'b110  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_XOR;
                                     3'b111  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_AND;
                                 endcase // funct3
                             end // 7'b0000000
