@@ -239,7 +239,7 @@ assign lsu2exu_exc_o = dmem_resp_er | lsu_exc_req;
 // Sign- or zero-extending data received from DMEM
 always_comb begin
     case (lsu_cmd_ff)
-        SCR1_LSU_CMD_LH : lsu2exu_ldata_o = {{16{dmem2lsu_rdata_i[15]}}, dmem2lsu_rdata_i[15:0]};
+        SCR1_LSU_CMD_LH : lsu2exu_ldata_o = { 16'b0,                     dmem2lsu_rdata_i[15:0]};
         SCR1_LSU_CMD_LHU: lsu2exu_ldata_o = { 16'b0,                     dmem2lsu_rdata_i[15:0]};
         SCR1_LSU_CMD_LB : lsu2exu_ldata_o = { 24'b0,                     dmem2lsu_rdata_i[7:0]};
         SCR1_LSU_CMD_LBU: lsu2exu_ldata_o = { 24'b0,                     dmem2lsu_rdata_i[7:0]};
