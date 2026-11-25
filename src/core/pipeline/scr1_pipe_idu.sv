@@ -285,7 +285,11 @@ always_comb begin
                             3'b000  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_ADD;        // ADDI
                             3'b010  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_SUB_LT;     // SLTI
                             3'b011  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_SUB_LTU;    // SLTIU
-                            3'b100  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_XOR;        // XORI
+                            3'b100  : begin
+                                // XORI
+                                idu2exu_cmd_o.imm         = {{24{instr[27]}}, instr[27:20]};
+                                idu2exu_cmd_o.ialu_cmd    = SCR1_IALU_CMD_XOR;
+                            end
                             3'b110  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_OR;         // ORI
                             3'b111  : idu2exu_cmd_o.ialu_cmd  = SCR1_IALU_CMD_AND;        // ANDI
                             3'b001  : begin
